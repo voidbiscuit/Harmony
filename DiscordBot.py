@@ -75,11 +75,20 @@ class DiscordBot:
                 self.config.update({file.split('.')[-2]: open(self.config_path + file, 'r').read()})
         # If token is empty, get user token
         while self.config['token'] == '':
-            print(
-                self.__text_util.format_text(open('Instructions/empty_token_file.txt').read(), [34])
-            )
+            print(self.__text_util.format_text(open('Instructions/empty_token_file.txt').read(), [34]))
             input("\nPress Enter to open WebPage")
             webbrowser.open('https://discordapp.com/developers/applications/')
-            token = input(self.__text_util.format_text("\nToken > ", [34]))
-            self.config.update({"token", token})
+            token = input(self.__text_util.format_text('\nToken > ', [34]))
+            self.config.update({'token': token})
             open(self.config_path + 'token.txt', 'w').write(token.strip('\\s'))
+
+        while self.config['prefix'] == '':
+            prefix = ''
+            confirm = ''
+            while not confirm[:3].lower() == 'yes':
+                prefix = ''
+                while prefix == '':
+                    prefix = input(self.__text_util.format_text('\nEnter Prefix > ', [34]))
+                confirm = input('Prefix will be set as [' + prefix + ']\nIs this okay? Type Yes to confirm. > ')
+            self.config.update({"prefix": prefix})
+            open(self.config_path + 'prefix.txt', 'w').write(prefix)

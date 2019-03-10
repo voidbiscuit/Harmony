@@ -39,9 +39,11 @@ class Console:
             '\n' * 100 +
             '\n-'
             '\n- Logged in as {:s} user ID {:s}'
+            '\n- Invite Link : https://discordapp.com/oauth2/authorize?client_id={:s}&scope=bot'
             '\n-'
             '\n- The time is now {:s}',
             client.user.name,
+            client.user.id,
             client.user.id,
             datetime.datetime.now().strftime('%Y/%m/%d %H:%M:%S')
         ))
