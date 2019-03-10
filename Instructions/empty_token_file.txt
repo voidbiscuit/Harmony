@@ -1,0 +1,10 @@
+##### Your token file is empty!
+
+Upon pressing Enter, a page will be opened to Discord's website.
+
+1. Log into Discord
+2. Make a New Application
+3. Click Bot and create a Bot
+4. Click Copy to copy the Token
+
+Paste this token below, and press Enter again!

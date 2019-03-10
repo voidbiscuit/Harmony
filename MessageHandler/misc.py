@@ -1,15 +1,14 @@
 import discord
 import re
 
-# Final
-charsToEscape = '\\*_`'
+
 
 # Variables
 client = discord.client
 message = discord.message
 
 
-# Check Commands
+# Check Command
 async def check_command(update_client, update_message):
     # Update Globals
     global client, message
@@ -19,10 +18,8 @@ async def check_command(update_client, update_message):
     # Extract Data
     content = message.content.replace('t!', '')
 
-    # Switch Commands
-    if content.startswith('hello'):
-        await reply(hello())
-        return True
+    # Switch Command
+
 
     if content.startswith('penguin'):
         await reply(penguin())
@@ -61,11 +58,11 @@ async def reply(response):
     )
 
 
-# Commands
+# Command
 
 # Reply Hello
 def hello():
-    return 'Hello {0.author.mention}'.format(message)
+
 
 
 def penguin():
@@ -74,50 +71,9 @@ def penguin():
 
 # Escape
 def escape(content):
-    content = content.replace('escape', '', 1)
-    for char in charsToEscape:
-        content = content.replace(char, str.format("\\{:s}", char))
-    return content
+
 
 
 def pokecord_marketsearch(content):
-    retval = str.format(
-        'p!market search'
-        ' --name {:s}'
-        ' --order {:s}',
-        content,
-        'price ascending'
-    )
+    retval =
     return retval
-
-
-def english_to_russian(content):
-    translation = {
-        # Englishhian
-        "Cat": "pushistiy",
-        "Fluffy": "pushistiy",
-        "Hello": "ПРИВЕТ",
-        "Bear": "medved",
-        "Anya": "Spoonya",
-        "Tim": "Tim the Wizard",
-        # Russian
-        "ПРИВЕТ": "Hello"
-    }
-    for english, russian in translation.items():
-        uppercase = content[0] > 'Z'
-        pattern = re.compile(english, re.IGNORECASE)
-        content = pattern.sub(russian, content)
-    return content
-
-
-# Invalid Command
-def invalid_command():
-    return '`Invalid Command`'
-
-
-def whois(content):
-    if content == "<@103865056172732416>":
-        return "I'm a Wizard"
-    if content == "<@285529910771056641>":
-        return "I AM GERALT"
-    return "Can't find u"
