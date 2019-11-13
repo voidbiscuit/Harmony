@@ -92,3 +92,7 @@ class DiscordBot:
                 confirm = input('Prefix will be set as [' + prefix + ']\nIs this okay? Type Yes to confirm. > ')
             self.config.update({"prefix": prefix})
             open(self.config_path + 'prefix.txt', 'w').write(prefix)
+
+# Launch Bot
+if __name__ == '__main__':
+    DiscordBot()
